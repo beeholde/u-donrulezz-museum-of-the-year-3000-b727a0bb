@@ -1,22 +1,20 @@
+"""Museum of the Year 3000 — entry label writer.
+
+Writes the winning exhibit label to /output/entry.txt.
+"""
 import os
 
-
-def build_label():
-    object_name = "CAPTCHA"
-    era = "c. 2025"
-    ritual = "Humans proved they were human"
-    task = "by finding traffic lights"
-    doubter = "for a machine that doubted them"
-    label = f"{object_name}, {era}. {ritual} {task} {doubter}."
-    return label
+LABEL = (
+    "CAPTCHA, c. 2025. Humans proved they were human by finding "
+    "traffic lights for a machine that doubted them."
+)
 
 
-def main():
-    label = build_label()
-    assert 1 <= len(label) <= 200
+def main() -> None:
+    assert 1 <= len(LABEL) <= 200, "label outside 1-200 chars"
     os.makedirs("/output", exist_ok=True)
     with open("/output/entry.txt", "w", encoding="utf-8") as fh:
-        fh.write(label)
+        fh.write(LABEL)
 
 
 if __name__ == "__main__":
